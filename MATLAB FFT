@@ -1,0 +1,12 @@
+% script to run FFT on an oboe. Recorded sound is a courtesy of Dr. Joseph Hoffbeck, from 
+% the University of Maryland. I have downloaded the recorded file oboe.wav in my system.
+% The file can be replaced by any other .wav file but needs to be in
+% the MATLAB searchpath. The result of the code is a Frequency spectrum
+% decomposition of the oboe sound. 
+
+[y,Fs] = audioread('oboe.wav');  % read the signal amplitude and sampling frequency.  
+N = length(y);                   % N stores the length of the signal 
+F_bins = [0:Fs/N:(1-1/N)*Fs];    % creates frequency bins in the frequency domain
+Y = fft(y);                      % fft function to create the complex coefficients of the signal harmonics
+Y_mag = abs(Y);                  % get the magnitude of the complex coefficients
+plot(F_bins,Y_mag);              % funtion to plot the magnitude spectrum of the oboe.     
